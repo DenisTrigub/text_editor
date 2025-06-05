@@ -14,37 +14,27 @@ namespace text_editor
 
         private static HashSet<string> dictionary;
         private static string loadedPath;
-        private static List<(string Word, int Index, int Length)> misspelledWords = new();
+        public static List<(string Word, int Index, int Length)> misspelledWords = new();
 
         public void Syntax_highlighting(RichTextBox editor, string dictionaryPath)
         {
             if (dictionary == null || loadedPath != dictionaryPath)
             {
                 dictionary = new HashSet<string>();
-                using (StreamReader reader = new StreamReader(dictionaryPath))
-                {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
-                        dictionary.Add(line.ToLower());
-                }
+                foreach (var line in File.ReadLines(dictionaryPath))
+                    dictionary.Add(line.ToLower());
                 loadedPath = dictionaryPath;
             }
+
             misspelledWords.Clear();
 
-            int cursorPosition = editor.SelectionStart;
-            int selectionLength = editor.SelectionLength;
-
             string text = editor.Text;
-            editor.SelectAll();
-            editor.SelectionColor = Color.Black;
-
             string[] words = Regex.Split(text, @"\W+");
             int searchStart = 0;
 
             foreach (string word in words)
             {
-                if (string.IsNullOrWhiteSpace(word))
-                    continue;
+                if (string.IsNullOrWhiteSpace(word)) continue;
 
                 int index = text.IndexOf(word, searchStart, StringComparison.OrdinalIgnoreCase);
                 if (index == -1) continue;
@@ -53,16 +43,40 @@ namespace text_editor
 
                 if (!dictionary.Contains(word.ToLower()))
                 {
-                    editor.Select(index, word.Length);
-                    editor.SelectionColor = Color.Red;
-
                     misspelledWords.Add((word, index, word.Length));
                 }
             }
-
-            editor.Select(cursorPosition, selectionLength);
-            editor.SelectionColor = Color.Black;
         }
+
+
+        public void UnderlineMisspelledWords(RichTextBox editor)
+        {
+            if (editor.TextLength == 0) return;
+
+            int originalStart = editor.SelectionStart;
+            int originalLength = editor.SelectionLength;
+
+            editor.SuspendLayout();
+
+            editor.SelectAll();
+            editor.SelectionFont = new Font(editor.Font, FontStyle.Regular);
+            editor.SelectionColor = Color.Black;
+
+            foreach (var (word, index, length) in misspelledWords)
+            {
+                editor.Select(index, length);
+                Font cur = editor.SelectionFont ?? editor.Font;
+                editor.SelectionFont = new Font(cur, FontStyle.Underline);
+                editor.SelectionColor = Color.Red;
+            }
+
+            editor.Select(originalStart, originalLength);
+            editor.ScrollToCaret();
+            editor.ResumeLayout();
+        }
+
+
+
 
         public void HandleMouseMove(RichTextBox editor, ToolTip tooltip, MouseEventArgs e)
         {
@@ -122,6 +136,8 @@ namespace text_editor
             return candidates.FirstOrDefault() ?? "(немає варіантів)";
         }
 
+
+
         private int LevenshteinDistance(string a, string b)
         {
             int[,] dp = new int[a.Length + 1, b.Length + 1];
@@ -143,5 +159,6 @@ namespace text_editor
 
             return dp[a.Length, b.Length];
         }
+
     }
 }
