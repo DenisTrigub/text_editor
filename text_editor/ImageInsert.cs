@@ -6,10 +6,11 @@ using System.Threading.Tasks;
 
 namespace text_editor
 {
-    partial class ImageInsert
+    partial class text_editor
     {
-        public static void InsertImage(RichTextBox richTextBox, string imagePath)
+        public void InsertImage(RichTextBox richTextBox, string imagePath)
         {
+
             if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
             {
                 MessageBox.Show("File not found!");
@@ -26,6 +27,7 @@ namespace text_editor
 
                 img.Dispose();
             }
+
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
