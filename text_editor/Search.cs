@@ -7,9 +7,9 @@ using System.Windows.Forms;
 
 namespace test_editor
 {
-    partial class Form1
+    partial class text_editor
     {
-        private void textBoxSearch_TextChanged(object sender, EventArgs e)
+        private void textBoxSearch_TextChanged(object sender, EventArgs e, RichTextBox richTextBox1, TextBox textBoxSearch)
         {
             if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
             {
@@ -23,7 +23,7 @@ namespace test_editor
             }
         }
 
-        private void buttonFind_Click(object sender, EventArgs e)
+        private void buttonFind_Click(object sender, EventArgs e, RichTextBox richTextBox1, TextBox textBoxSearch)
         {
             string searchText = textBoxSearch.Text;
 
