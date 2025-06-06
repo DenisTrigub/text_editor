@@ -5,9 +5,9 @@ using System.Windows.Forms;
 
 namespace test_editor
 {
-    partial class Form1 : Form
+    partial class text_editor
     {
-        private void ToggleStyle(FontStyle style)
+        private void ToggleStyle(FontStyle style, RichTextBox richTextBox1)
         {
             if (richTextBox1.SelectionFont == null) return;
 
@@ -19,11 +19,12 @@ namespace test_editor
             richTextBox1.SelectionFont = new Font(currentFont, newStyle);
         }
 
-        private void buttonBold_Click(object sender, EventArgs e) => ToggleStyle(FontStyle.Bold);
-        private void buttonItalic_Click(object sender, EventArgs e) => ToggleStyle(FontStyle.Italic);
-        private void buttonUnderline_Click(object sender, EventArgs e) => ToggleStyle(FontStyle.Underline);
+        private void buttonBold_Click(object sender, EventArgs e, RichTextBox richTextBox1) => ToggleStyle(FontStyle.Bold, richTextBox1);
+        private void buttonItalic_Click(object sender, EventArgs e, RichTextBox richTextBox1) => ToggleStyle(FontStyle.Italic, richTextBox1);
+        private void buttonUnderline_Click(object sender, EventArgs e, RichTextBox richTextBox1) => ToggleStyle(FontStyle.Underline, richTextBox1);
 
-        private void buttonFont_Click(object sender, EventArgs e)
+
+        private void buttonFont_Click(object sender, EventArgs e , RichTextBox richTextBox1)
         {
             using FontDialog fontDialog = new FontDialog();
             if (richTextBox1.SelectionFont != null)
@@ -33,22 +34,22 @@ namespace test_editor
                 richTextBox1.SelectionFont = fontDialog.Font;
         }
 
-        private void buttonColor_Click(object sender, EventArgs e)
+        private void buttonColor_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
             using ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
                 richTextBox1.SelectionColor = colorDialog.Color;
         }
 
-        private void buttonCut_Click(object sender, EventArgs e) => richTextBox1.Cut();
-        private void buttonCopy_Click(object sender, EventArgs e) => richTextBox1.Copy();
-        private void buttonPaste_Click(object sender, EventArgs e) => richTextBox1.Paste();
+        private void buttonCut_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Cut();
+        private void buttonCopy_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Copy();
+        private void buttonPaste_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Paste();
 
-        private void buttonAlignLeft_Click(object sender, EventArgs e) => richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
-        private void buttonAlignCenter_Click(object sender, EventArgs e) => richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
-        private void buttonAlignRight_Click(object sender, EventArgs e) => richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
+        private void buttonAlignLeft_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
+        private void buttonAlignCenter_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+        private void buttonAlignRight_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
 
-        private void buttonNumbering_Click(object sender, EventArgs e)
+        private void buttonNumbering_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
             int start = richTextBox1.SelectionStart;
             int length = richTextBox1.SelectionLength;
@@ -81,7 +82,7 @@ namespace test_editor
             richTextBox1.Lines = lines;
         }
 
-        private void buttonApplyBullet_Click(object sender, EventArgs e)
+        private void buttonApplyBullet_Click(object sender, EventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
         {
             string bullet = comboBoxBullets.SelectedItem?.ToString() ?? "•";
 
@@ -110,7 +111,7 @@ namespace test_editor
             richTextBox1.Lines = lines;
         }
 
-        private void richTextBox1_KeyDown(object sender, KeyEventArgs e)
+        private void richTextBox1_KeyDown(object sender, KeyEventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
         {
             if (e.KeyCode == Keys.Enter)
             {
