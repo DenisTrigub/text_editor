@@ -59,15 +59,14 @@ namespace text_editor
             editor.SuspendLayout();
 
             editor.SelectAll();
-            editor.SelectionFont = new Font(editor.Font, FontStyle.Regular);
-            editor.SelectionColor = Color.Black;
+            Font currentFont = editor.SelectionFont ?? editor.Font;
+            editor.SelectionFont = new Font(currentFont, currentFont.Style & ~FontStyle.Strikeout);
 
             foreach (var (word, index, length) in misspelledWords)
             {
                 editor.Select(index, length);
-                Font cur = editor.SelectionFont ?? editor.Font;
-                editor.SelectionFont = new Font(cur, FontStyle.Underline);
-                editor.SelectionColor = Color.Red;
+                Font wordFont = editor.SelectionFont ?? editor.Font;
+                editor.SelectionFont = new Font(wordFont, wordFont.Style | FontStyle.Strikeout);
             }
 
             editor.Select(originalStart, originalLength);

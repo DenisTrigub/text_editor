@@ -33,19 +33,24 @@
             richTextBox1 = new RichTextBox();
             menuStrip1 = new MenuStrip();
             кнопка1ToolStripMenuItem = new ToolStripMenuItem();
-            курсивToolStripMenuItem = new ToolStripMenuItem();
             кнопка2ToolStripMenuItem = new ToolStripMenuItem();
-            кнопка2ToolStripMenuItem1 = new ToolStripMenuItem();
-            червонийToolStripMenuItem = new ToolStripMenuItem();
-            синійToolStripMenuItem = new ToolStripMenuItem();
+            кнопка3ToolStripMenuItem = new ToolStripMenuItem();
             кнопка4ToolStripMenuItem = new ToolStripMenuItem();
-            червонийToolStripMenuItem1 = new ToolStripMenuItem();
-            синійToolStripMenuItem1 = new ToolStripMenuItem();
-            вибірШрифтуToolStripMenuItem = new ToolStripMenuItem();
-            червонийToolStripMenuItem2 = new ToolStripMenuItem();
-            синійToolStripMenuItem2 = new ToolStripMenuItem();
+            кнопка5ToolStripMenuItem = new ToolStripMenuItem();
+            кнопка6ToolStripMenuItem = new ToolStripMenuItem();
+            кнопка7ToolStripMenuItem = new ToolStripMenuItem();
+            кнопка8ToolStripMenuItem = new ToolStripMenuItem();
+            кнопка9ToolStripMenuItem = new ToolStripMenuItem();
+            кнопка10ToolStripMenuItem = new ToolStripMenuItem();
+            кнопка11ToolStripMenuItem = new ToolStripMenuItem();
+            влевоToolStripMenuItem = new ToolStripMenuItem();
+            поЦентруToolStripMenuItem = new ToolStripMenuItem();
+            вправоToolStripMenuItem = new ToolStripMenuItem();
+            кнопка12ToolStripMenuItem = new ToolStripMenuItem();
+            imageToolStripMenuItem1 = new ToolStripMenuItem();
+            chekToolStripMenuItem = new ToolStripMenuItem();
             menuStrip2 = new MenuStrip();
-            toolStripMenuItem1 = new ToolStripMenuItem();
+            кнопка0toolStripMenuItem1 = new ToolStripMenuItem();
             toolStripMenuItem10 = new ToolStripMenuItem();
             toolStripMenuItem11 = new ToolStripMenuItem();
             toolStripMenuItem12 = new ToolStripMenuItem();
@@ -58,23 +63,27 @@
             // 
             // richTextBox1
             // 
-            richTextBox1.Anchor = AnchorStyles.Top;
+            richTextBox1.Anchor = AnchorStyles.None;
             richTextBox1.BorderStyle = BorderStyle.None;
+            richTextBox1.HideSelection = false;
             richTextBox1.ImeMode = ImeMode.NoControl;
-            richTextBox1.Location = new Point(110, 61);
+            richTextBox1.Location = new Point(126, 40);
             richTextBox1.Name = "richTextBox1";
+            richTextBox1.RightToLeft = RightToLeft.No;
             richTextBox1.Size = new Size(595, 842);
             richTextBox1.TabIndex = 5;
             richTextBox1.Text = "";
             richTextBox1.TextChanged += richTextBox1_TextChanged;
+            richTextBox1.MouseDown += editorTextBox_MouseDown;
+            richTextBox1.MouseMove += editorTextBox_MouseMove;
             // 
             // menuStrip1
             // 
             menuStrip1.BackColor = SystemColors.ButtonHighlight;
-            menuStrip1.Dock = DockStyle.Right;
+            menuStrip1.Dock = DockStyle.Left;
             menuStrip1.ImageScalingSize = new Size(20, 20);
-            menuStrip1.Items.AddRange(new ToolStripItem[] { кнопка1ToolStripMenuItem, курсивToolStripMenuItem, кнопка2ToolStripMenuItem, кнопка2ToolStripMenuItem1, кнопка4ToolStripMenuItem, вибірШрифтуToolStripMenuItem });
-            menuStrip1.Location = new Point(640, 40);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { кнопка1ToolStripMenuItem, кнопка2ToolStripMenuItem, кнопка3ToolStripMenuItem, кнопка4ToolStripMenuItem, кнопка5ToolStripMenuItem, кнопка6ToolStripMenuItem, кнопка7ToolStripMenuItem, кнопка8ToolStripMenuItem, кнопка9ToolStripMenuItem, кнопка10ToolStripMenuItem, кнопка11ToolStripMenuItem, кнопка12ToolStripMenuItem, imageToolStripMenuItem1, chekToolStripMenuItem });
+            menuStrip1.Location = new Point(0, 40);
             menuStrip1.Name = "menuStrip1";
             menuStrip1.Size = new Size(156, 755);
             menuStrip1.TabIndex = 6;
@@ -86,102 +95,149 @@
             кнопка1ToolStripMenuItem.Name = "кнопка1ToolStripMenuItem";
             кнопка1ToolStripMenuItem.Size = new Size(143, 24);
             кнопка1ToolStripMenuItem.ToolTipText = "Жирний";
-            // 
-            // курсивToolStripMenuItem
-            // 
-            курсивToolStripMenuItem.Image = (Image)resources.GetObject("курсивToolStripMenuItem.Image");
-            курсивToolStripMenuItem.Name = "курсивToolStripMenuItem";
-            курсивToolStripMenuItem.Size = new Size(143, 24);
-            курсивToolStripMenuItem.ToolTipText = "Курсив";
+            кнопка1ToolStripMenuItem.Click += кнопка1ToolStripMenuItem_Click;
             // 
             // кнопка2ToolStripMenuItem
             // 
             кнопка2ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка2ToolStripMenuItem.Image");
             кнопка2ToolStripMenuItem.Name = "кнопка2ToolStripMenuItem";
             кнопка2ToolStripMenuItem.Size = new Size(143, 24);
-            кнопка2ToolStripMenuItem.ToolTipText = "Підкреслено";
+            кнопка2ToolStripMenuItem.ToolTipText = "Курсив";
+            кнопка2ToolStripMenuItem.Click += кнопка2ToolStripMenuItem_Click;
             // 
-            // кнопка2ToolStripMenuItem1
+            // кнопка3ToolStripMenuItem
             // 
-            кнопка2ToolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { червонийToolStripMenuItem, синійToolStripMenuItem });
-            кнопка2ToolStripMenuItem1.Image = (Image)resources.GetObject("кнопка2ToolStripMenuItem1.Image");
-            кнопка2ToolStripMenuItem1.Name = "кнопка2ToolStripMenuItem1";
-            кнопка2ToolStripMenuItem1.Size = new Size(143, 24);
-            кнопка2ToolStripMenuItem1.ToolTipText = "Палітра";
-            // 
-            // червонийToolStripMenuItem
-            // 
-            червонийToolStripMenuItem.Name = "червонийToolStripMenuItem";
-            червонийToolStripMenuItem.Size = new Size(224, 26);
-            червонийToolStripMenuItem.Text = "Червоний";
-            // 
-            // синійToolStripMenuItem
-            // 
-            синійToolStripMenuItem.Name = "синійToolStripMenuItem";
-            синійToolStripMenuItem.Size = new Size(224, 26);
-            синійToolStripMenuItem.Text = "Синій";
+            кнопка3ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка3ToolStripMenuItem.Image");
+            кнопка3ToolStripMenuItem.Name = "кнопка3ToolStripMenuItem";
+            кнопка3ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка3ToolStripMenuItem.ToolTipText = "Підкреслено";
+            кнопка3ToolStripMenuItem.Click += кнопка3ToolStripMenuItem_Click;
             // 
             // кнопка4ToolStripMenuItem
             // 
-            кнопка4ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { червонийToolStripMenuItem1, синійToolStripMenuItem1 });
             кнопка4ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка4ToolStripMenuItem.Image");
             кнопка4ToolStripMenuItem.Name = "кнопка4ToolStripMenuItem";
             кнопка4ToolStripMenuItem.Size = new Size(143, 24);
-            кнопка4ToolStripMenuItem.ToolTipText = "Колір фону";
+            кнопка4ToolStripMenuItem.ToolTipText = "Палітра";
+            кнопка4ToolStripMenuItem.Click += кнопка4ToolStripMenuItem_Click;
             // 
-            // червонийToolStripMenuItem1
+            // кнопка5ToolStripMenuItem
             // 
-            червонийToolStripMenuItem1.Name = "червонийToolStripMenuItem1";
-            червонийToolStripMenuItem1.Size = new Size(163, 26);
-            червонийToolStripMenuItem1.Text = "Червоний";
+            кнопка5ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка5ToolStripMenuItem.Image");
+            кнопка5ToolStripMenuItem.Name = "кнопка5ToolStripMenuItem";
+            кнопка5ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка5ToolStripMenuItem.ToolTipText = "Колір фону";
+            кнопка5ToolStripMenuItem.Click += кнопка5ToolStripMenuItem_Click;
             // 
-            // синійToolStripMenuItem1
+            // кнопка6ToolStripMenuItem
             // 
-            синійToolStripMenuItem1.Name = "синійToolStripMenuItem1";
-            синійToolStripMenuItem1.Size = new Size(163, 26);
-            синійToolStripMenuItem1.Text = "Синій";
+            кнопка6ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка6ToolStripMenuItem.Image");
+            кнопка6ToolStripMenuItem.Name = "кнопка6ToolStripMenuItem";
+            кнопка6ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка6ToolStripMenuItem.ToolTipText = "Вибір шрифту";
+            кнопка6ToolStripMenuItem.Click += кнопка6ToolStripMenuItem_Click;
             // 
-            // вибірШрифтуToolStripMenuItem
+            // кнопка7ToolStripMenuItem
             // 
-            вибірШрифтуToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { червонийToolStripMenuItem2, синійToolStripMenuItem2 });
-            вибірШрифтуToolStripMenuItem.Image = (Image)resources.GetObject("вибірШрифтуToolStripMenuItem.Image");
-            вибірШрифтуToolStripMenuItem.Name = "вибірШрифтуToolStripMenuItem";
-            вибірШрифтуToolStripMenuItem.Size = new Size(143, 24);
-            вибірШрифтуToolStripMenuItem.ToolTipText = "Вибір шрифту";
+            кнопка7ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка7ToolStripMenuItem.Image");
+            кнопка7ToolStripMenuItem.Name = "кнопка7ToolStripMenuItem";
+            кнопка7ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка7ToolStripMenuItem.Click += кнопка7ToolStripMenuItem_Click;
             // 
-            // червонийToolStripMenuItem2
+            // кнопка8ToolStripMenuItem
             // 
-            червонийToolStripMenuItem2.Name = "червонийToolStripMenuItem2";
-            червонийToolStripMenuItem2.Size = new Size(163, 26);
-            червонийToolStripMenuItem2.Text = "Червоний";
+            кнопка8ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка8ToolStripMenuItem.Image");
+            кнопка8ToolStripMenuItem.Name = "кнопка8ToolStripMenuItem";
+            кнопка8ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка8ToolStripMenuItem.Click += кнопка8ToolStripMenuItem_Click;
             // 
-            // синійToolStripMenuItem2
+            // кнопка9ToolStripMenuItem
             // 
-            синійToolStripMenuItem2.Name = "синійToolStripMenuItem2";
-            синійToolStripMenuItem2.Size = new Size(163, 26);
-            синійToolStripMenuItem2.Text = "Синій";
+            кнопка9ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка9ToolStripMenuItem.Image");
+            кнопка9ToolStripMenuItem.Name = "кнопка9ToolStripMenuItem";
+            кнопка9ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка9ToolStripMenuItem.Click += кнопка9ToolStripMenuItem_Click;
+            // 
+            // кнопка10ToolStripMenuItem
+            // 
+            кнопка10ToolStripMenuItem.Name = "кнопка10ToolStripMenuItem";
+            кнопка10ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка10ToolStripMenuItem.Text = "1. 2 .3.";
+            кнопка10ToolStripMenuItem.Click += нумерацияToolStripMenuItem_Click;
+            // 
+            // кнопка11ToolStripMenuItem
+            // 
+            кнопка11ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { влевоToolStripMenuItem, поЦентруToolStripMenuItem, вправоToolStripMenuItem });
+            кнопка11ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка11ToolStripMenuItem.Image");
+            кнопка11ToolStripMenuItem.Name = "кнопка11ToolStripMenuItem";
+            кнопка11ToolStripMenuItem.Size = new Size(143, 24);
+            // 
+            // влевоToolStripMenuItem
+            // 
+            влевоToolStripMenuItem.Image = (Image)resources.GetObject("влевоToolStripMenuItem.Image");
+            влевоToolStripMenuItem.Name = "влевоToolStripMenuItem";
+            влевоToolStripMenuItem.Size = new Size(162, 26);
+            влевоToolStripMenuItem.Text = "вліво";
+            влевоToolStripMenuItem.Click += влевоToolStripMenuItem_Click;
+            // 
+            // поЦентруToolStripMenuItem
+            // 
+            поЦентруToolStripMenuItem.Image = (Image)resources.GetObject("поЦентруToolStripMenuItem.Image");
+            поЦентруToolStripMenuItem.Name = "поЦентруToolStripMenuItem";
+            поЦентруToolStripMenuItem.Size = new Size(162, 26);
+            поЦентруToolStripMenuItem.Text = "по центру";
+            поЦентруToolStripMenuItem.Click += поЦентруToolStripMenuItem_Click;
+            // 
+            // вправоToolStripMenuItem
+            // 
+            вправоToolStripMenuItem.Image = (Image)resources.GetObject("вправоToolStripMenuItem.Image");
+            вправоToolStripMenuItem.Name = "вправоToolStripMenuItem";
+            вправоToolStripMenuItem.Size = new Size(162, 26);
+            вправоToolStripMenuItem.Text = "вправо";
+            вправоToolStripMenuItem.Click += вправоToolStripMenuItem_Click;
+            // 
+            // кнопка12ToolStripMenuItem
+            // 
+            кнопка12ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка12ToolStripMenuItem.Image");
+            кнопка12ToolStripMenuItem.Name = "кнопка12ToolStripMenuItem";
+            кнопка12ToolStripMenuItem.Size = new Size(143, 24);
+            кнопка12ToolStripMenuItem.Click += кнопка12ToolStripMenuItem_Click;
+            // 
+            // imageToolStripMenuItem1
+            // 
+            imageToolStripMenuItem1.Image = (Image)resources.GetObject("imageToolStripMenuItem1.Image");
+            imageToolStripMenuItem1.Name = "imageToolStripMenuItem1";
+            imageToolStripMenuItem1.Size = new Size(143, 24);
+            imageToolStripMenuItem1.Click += imageToolStripMenuItem1_Click;
+            // 
+            // chekToolStripMenuItem
+            // 
+            chekToolStripMenuItem.Image = (Image)resources.GetObject("chekToolStripMenuItem.Image");
+            chekToolStripMenuItem.Name = "chekToolStripMenuItem";
+            chekToolStripMenuItem.Size = new Size(143, 24);
+            chekToolStripMenuItem.Click += chekToolStripMenuItem_Click;
             // 
             // menuStrip2
             // 
             menuStrip2.BackColor = SystemColors.ButtonHighlight;
             menuStrip2.ImageScalingSize = new Size(20, 20);
-            menuStrip2.Items.AddRange(new ToolStripItem[] { toolStripMenuItem1 });
+            menuStrip2.Items.AddRange(new ToolStripItem[] { кнопка0toolStripMenuItem1 });
             menuStrip2.Location = new Point(0, 0);
             menuStrip2.Name = "menuStrip2";
             menuStrip2.Size = new Size(796, 40);
             menuStrip2.TabIndex = 7;
             menuStrip2.Text = "menuStrip2";
             // 
-            // toolStripMenuItem1
+            // кнопка0toolStripMenuItem1
             // 
-            toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem10, toolStripMenuItem11, toolStripMenuItem12 });
-            toolStripMenuItem1.Image = (Image)resources.GetObject("toolStripMenuItem1.Image");
-            toolStripMenuItem1.ImageScaling = ToolStripItemImageScaling.None;
-            toolStripMenuItem1.Name = "toolStripMenuItem1";
-            toolStripMenuItem1.RightToLeftAutoMirrorImage = true;
-            toolStripMenuItem1.Size = new Size(46, 36);
-            toolStripMenuItem1.ToolTipText = "Меню";
-            toolStripMenuItem1.Click += toolStripMenuItem1_Click;
+            кнопка0toolStripMenuItem1.DropDownItems.AddRange(new ToolStripItem[] { toolStripMenuItem10, toolStripMenuItem11, toolStripMenuItem12 });
+            кнопка0toolStripMenuItem1.Image = (Image)resources.GetObject("кнопка0toolStripMenuItem1.Image");
+            кнопка0toolStripMenuItem1.ImageScaling = ToolStripItemImageScaling.None;
+            кнопка0toolStripMenuItem1.Name = "кнопка0toolStripMenuItem1";
+            кнопка0toolStripMenuItem1.RightToLeftAutoMirrorImage = true;
+            кнопка0toolStripMenuItem1.Size = new Size(46, 36);
+            кнопка0toolStripMenuItem1.ToolTipText = "Меню";
+            кнопка0toolStripMenuItem1.Click += toolStripMenuItem1_Click;
             // 
             // toolStripMenuItem10
             // 
@@ -189,6 +245,7 @@
             toolStripMenuItem10.Name = "toolStripMenuItem10";
             toolStripMenuItem10.Size = new Size(263, 26);
             toolStripMenuItem10.Text = "Відкрити файл";
+            toolStripMenuItem10.Click += toolStripMenuItem10_Click;
             // 
             // toolStripMenuItem11
             // 
@@ -196,6 +253,7 @@
             toolStripMenuItem11.Name = "toolStripMenuItem11";
             toolStripMenuItem11.Size = new Size(263, 26);
             toolStripMenuItem11.Text = "Зберегти файл";
+            toolStripMenuItem11.Click += toolStripMenuItem11_Click;
             // 
             // toolStripMenuItem12
             // 
@@ -203,22 +261,24 @@
             toolStripMenuItem12.Name = "toolStripMenuItem12";
             toolStripMenuItem12.Size = new Size(263, 26);
             toolStripMenuItem12.Text = "Зберегти як Новий файл";
+            toolStripMenuItem12.Click += toolStripMenuItem12_Click;
             // 
             // richTextBox2
             // 
-            richTextBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            richTextBox2.Anchor = AnchorStyles.None;
             richTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            richTextBox2.Location = new Point(572, 42);
+            richTextBox2.Location = new Point(315, -22);
             richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(180, 25);
+            richTextBox2.Size = new Size(180, 29);
             richTextBox2.TabIndex = 8;
             richTextBox2.Text = "";
+            richTextBox2.TextChanged += richTextBox2_TextChanged;
             // 
             // label1
             // 
-            label1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(508, 42);
+            label1.Location = new Point(251, -17);
             label1.Name = "label1";
             label1.Size = new Size(58, 20);
             label1.TabIndex = 9;
@@ -229,17 +289,17 @@
             // 
             AutoScaleDimensions = new SizeF(120F, 120F);
             AutoScaleMode = AutoScaleMode.Dpi;
-            AutoSize = true;
             ClientSize = new Size(796, 795);
             Controls.Add(menuStrip1);
             Controls.Add(label1);
             Controls.Add(richTextBox2);
             Controls.Add(richTextBox1);
             Controls.Add(menuStrip2);
+            Icon = (Icon)resources.GetObject("$this.Icon");
             MainMenuStrip = menuStrip1;
             Name = "Form2";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Текстовий ркедактор";
+            Text = "Текстовий редактор";
             WindowState = FormWindowState.Maximized;
             Load += Form2_Load;
             menuStrip1.ResumeLayout(false);
@@ -254,24 +314,29 @@
         private RichTextBox richTextBox1;
         private MenuStrip menuStrip1;
         private ToolStripMenuItem кнопка1ToolStripMenuItem;
-        private ToolStripMenuItem кнопка2ToolStripMenuItem;
-        private ToolStripMenuItem кнопка2ToolStripMenuItem1;
+        private ToolStripMenuItem кнопка3ToolStripMenuItem;
         private ToolStripMenuItem кнопка4ToolStripMenuItem;
+        private ToolStripMenuItem кнопка5ToolStripMenuItem;
         private MenuStrip menuStrip2;
-        private ToolStripMenuItem toolStripMenuItem1;
+        private ToolStripMenuItem кнопка0toolStripMenuItem1;
         private ToolStripMenuItem toolStripMenuItem10;
         private ToolStripMenuItem toolStripMenuItem11;
         private ToolStripMenuItem toolStripMenuItem12;
         private RichTextBox richTextBox2;
         private Label label1;
-        private ToolStripMenuItem вибірШрифтуToolStripMenuItem;
-        private ToolStripMenuItem червонийToolStripMenuItem;
-        private ToolStripMenuItem синійToolStripMenuItem;
-        private ToolStripMenuItem червонийToolStripMenuItem1;
-        private ToolStripMenuItem синійToolStripMenuItem1;
-        private ToolStripMenuItem червонийToolStripMenuItem2;
-        private ToolStripMenuItem синійToolStripMenuItem2;
-        private ToolStripMenuItem курсивToolStripMenuItem;
+        private ToolStripMenuItem кнопка6ToolStripMenuItem;
+        private ToolStripMenuItem кнопка2ToolStripMenuItem;
         private ToolTip toolTip1;
+        private ToolStripMenuItem кнопка7ToolStripMenuItem;
+        private ToolStripMenuItem кнопка8ToolStripMenuItem;
+        private ToolStripMenuItem кнопка10ToolStripMenuItem;
+        private ToolStripMenuItem кнопка12ToolStripMenuItem;
+        private ToolStripMenuItem кнопка11ToolStripMenuItem;
+        private ToolStripMenuItem влевоToolStripMenuItem;
+        private ToolStripMenuItem поЦентруToolStripMenuItem;
+        private ToolStripMenuItem вправоToolStripMenuItem;
+        private ToolStripMenuItem кнопка9ToolStripMenuItem;
+        private ToolStripMenuItem imageToolStripMenuItem1;
+        private ToolStripMenuItem chekToolStripMenuItem;
     }
 }

@@ -3,11 +3,11 @@ using System.Drawing;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
-namespace test_editor
+namespace text_editor
 {
-    partial class text_editor
+    public partial class text_editor
     {
-        private void ToggleStyle(FontStyle style, RichTextBox richTextBox1)
+        public void ToggleStyle(FontStyle style, RichTextBox richTextBox1)
         {
             if (richTextBox1.SelectionFont == null) return;
 
@@ -19,12 +19,14 @@ namespace test_editor
             richTextBox1.SelectionFont = new Font(currentFont, newStyle);
         }
 
-        private void buttonBold_Click(object sender, EventArgs e, RichTextBox richTextBox1) => ToggleStyle(FontStyle.Bold, richTextBox1);
-        private void buttonItalic_Click(object sender, EventArgs e, RichTextBox richTextBox1) => ToggleStyle(FontStyle.Italic, richTextBox1);
-        private void buttonUnderline_Click(object sender, EventArgs e, RichTextBox richTextBox1) => ToggleStyle(FontStyle.Underline, richTextBox1);
+        public void buttonCut_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Cut();
+        public void buttonCopy_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Copy();
+        public void buttonPaste_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Paste();
+        public void buttonAlignLeft_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
+        public void buttonAlignCenter_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
+        public void buttonAlignRight_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
 
-
-        private void buttonFont_Click(object sender, EventArgs e, RichTextBox richTextBox1)
+        public void buttonFont_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
             using FontDialog fontDialog = new FontDialog();
             if (richTextBox1.SelectionFont != null)
@@ -34,22 +36,23 @@ namespace test_editor
                 richTextBox1.SelectionFont = fontDialog.Font;
         }
 
-        private void buttonColor_Click(object sender, EventArgs e, RichTextBox richTextBox1)
+        public void buttonColor_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
             using ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
                 richTextBox1.SelectionColor = colorDialog.Color;
         }
 
-        private void buttonCut_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Cut();
-        private void buttonCopy_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Copy();
-        private void buttonPaste_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.Paste();
+        public void buttonHighlight_Click(object sender, EventArgs e, RichTextBox richTextBox1)
+        {
+            using ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.SelectionBackColor = colorDialog.Color;
+            }
+        }
 
-        private void buttonAlignLeft_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Left;
-        private void buttonAlignCenter_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
-        private void buttonAlignRight_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
-
-        private void buttonNumbering_Click(object sender, EventArgs e, RichTextBox richTextBox1)
+        public void buttonNumbering_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
             int start = richTextBox1.SelectionStart;
             int length = richTextBox1.SelectionLength;
@@ -82,9 +85,9 @@ namespace test_editor
             richTextBox1.Lines = lines;
         }
 
-        private void buttonApplyBullet_Click(object sender, EventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
+        public void buttonApplyBullet_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
-            string bullet = comboBoxBullets.SelectedItem?.ToString() ?? "•";
+            string bullet = "•";
 
             int start = richTextBox1.SelectionStart;
             int length = richTextBox1.SelectionLength;
@@ -111,14 +114,13 @@ namespace test_editor
             richTextBox1.Lines = lines;
         }
 
-        private void richTextBox1_KeyDown(object sender, KeyEventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
+        public void richTextBox1_KeyDown(object sender, KeyEventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
         {
             if (e.KeyCode == Keys.Enter)
             {
                 int currentLine = richTextBox1.GetLineFromCharIndex(richTextBox1.SelectionStart);
                 string lineText = richTextBox1.Lines.Length > currentLine ? richTextBox1.Lines[currentLine] : "";
 
-                // Проверка на нумерацию "1. ", "2. ", и т.д.
                 var matchNumber = Regex.Match(lineText, @"^(\d+)\.\s");
                 if (matchNumber.Success)
                 {
@@ -128,7 +130,6 @@ namespace test_editor
                     return;
                 }
 
-                // Проверка на маркер (например "• ")
                 if (comboBoxBullets.SelectedItem != null)
                 {
                     string bullet = comboBoxBullets.SelectedItem.ToString();
@@ -140,6 +141,7 @@ namespace test_editor
                         return;
                     }
                 }
+
             }
         }
     }

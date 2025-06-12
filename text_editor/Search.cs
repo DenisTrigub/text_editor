@@ -5,11 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace test_editor
+namespace text_editor
 {
     partial class text_editor
     {
-        private void textBoxSearch_TextChanged(object sender, EventArgs e, RichTextBox richTextBox1, TextBox textBoxSearch)
+        public void textBoxSearch_TextChanged(RichTextBox richTextBox1, RichTextBox textBoxSearch)
         {
             if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
             {
@@ -23,7 +23,7 @@ namespace test_editor
             }
         }
 
-        private void buttonFind_Click(object sender, EventArgs e, RichTextBox richTextBox1, TextBox textBoxSearch)
+        public void buttonFind_Click(RichTextBox richTextBox1, RichTextBox textBoxSearch)
         {
             string searchText = textBoxSearch.Text;
 
