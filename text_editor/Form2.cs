@@ -110,18 +110,17 @@ namespace text_editor
 
         private void кнопка4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textEditor.buttonColor_Click( richTextBox1, кнопка4ToolStripMenuItem);
+            textEditor.buttonColor_Click(sender, e, richTextBox1);
         }
 
         private void кнопка5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textEditor.buttonHighlight_Click(richTextBox1, кнопка5ToolStripMenuItem);
+            textEditor.buttonHighlight_Click(sender, e, richTextBox1);
         }
 
         private void кнопка6ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textEditor.buttonFont_Click(sender, e, richTextBox1, кнопка6ToolStripMenuItem);
-            
+            textEditor.buttonFont_Click(sender, e, richTextBox1);
         }
 
         private void кнопка7ToolStripMenuItem_Click(object sender, EventArgs e)
