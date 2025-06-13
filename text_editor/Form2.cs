@@ -22,20 +22,20 @@ namespace text_editor
             InitializeComponent();
             menuStrip1.ShowItemToolTips = true;
             menuStrip2.ShowItemToolTips = true;
-            кнопка0toolStripMenuItem1.ToolTipText = "Меню";
-            кнопка1ToolStripMenuItem.ToolTipText = "Жирний";
-            кнопка2ToolStripMenuItem.ToolTipText = "Курсив";
-            кнопка3ToolStripMenuItem.ToolTipText = "Підкреслений";
-            кнопка4ToolStripMenuItem.ToolTipText = "Колір тексту";
-            кнопка5ToolStripMenuItem.ToolTipText = "Колір фону";
-            кнопка6ToolStripMenuItem.ToolTipText = "Вибір шрифту";
-            кнопка7ToolStripMenuItem.ToolTipText = "Вирізати";
-            кнопка8ToolStripMenuItem.ToolTipText = "Копіювати";
-            кнопка9ToolStripMenuItem.ToolTipText = "Вставити";
-            кнопка10ToolStripMenuItem.ToolTipText = "Номерація";
-            кнопка11ToolStripMenuItem.ToolTipText = "Виравнювання";
-            кнопка12ToolStripMenuItem.ToolTipText = "Маркер";
-            imageToolStripMenuItem1.ToolTipText = "Завантажити зображення";
+            MenutoolStripMenuItem1.ToolTipText = "Меню";
+            FattyToolStripMenuItem.ToolTipText = "Жирний";
+            ItalicsToolStripMenuItem.ToolTipText = "Курсив";
+            UnderlinedToolStripMenuItem.ToolTipText = "Підкреслений";
+            PaletteToolStripMenuItem.ToolTipText = "Колір тексту";
+            BackgroundColorToolStripMenuItem.ToolTipText = "Колір фону";
+            FontSelectionToolStripMenuItem.ToolTipText = "Вибір шрифту";
+            CutOutToolStripMenuItem.ToolTipText = "Вирізати";
+            CopyToolStripMenuItem.ToolTipText = "Копіювати";
+            InsertToolStripMenuItem.ToolTipText = "Вставити";
+            NumeberingToolStripMenuItem.ToolTipText = "Нумерація";
+            levelingToolStripMenuItem.ToolTipText = "Вирівнювання";
+            MarkerToolStripMenuItem.ToolTipText = "Маркер";
+            UploadImageToolStripMenuItem1.ToolTipText = "Завантажити зображення";
             chekToolStripMenuItem.ToolTipText = "Перевірити синтаксис";
 
 
