@@ -26,32 +26,40 @@ namespace text_editor
         public void buttonAlignCenter_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Center;
         public void buttonAlignRight_Click(object sender, EventArgs e, RichTextBox richTextBox1) => richTextBox1.SelectionAlignment = HorizontalAlignment.Right;
 
-        public void buttonFont_Click(object sender, EventArgs e, RichTextBox richTextBox1)
+        public void buttonFont_Click(object sender, EventArgs e, RichTextBox richTextBox1, ToolStripMenuItem butt)
         {
-            using FontDialog fontDialog = new FontDialog();
-            if (richTextBox1.SelectionFont != null)
-                fontDialog.Font = richTextBox1.SelectionFont;
+            using (FontDialog fontDialog = new FontDialog())
+            {
+                if (richTextBox1.SelectionFont != null)
+                    fontDialog.Font = richTextBox1.SelectionFont;
 
-            if (fontDialog.ShowDialog() == DialogResult.OK)
-                richTextBox1.SelectionFont = fontDialog.Font;
+                if (fontDialog.ShowDialog() == DialogResult.OK)
+                {
+                    richTextBox1.SelectionFont = fontDialog.Font;
+                    butt.Text = richTextBox1.SelectionFont.Size.ToString();
+                }
+            }
         }
 
-        public void buttonColor_Click(object sender, EventArgs e, RichTextBox richTextBox1)
-        {
-            using ColorDialog colorDialog = new ColorDialog();
-            if (colorDialog.ShowDialog() == DialogResult.OK)
-                richTextBox1.SelectionColor = colorDialog.Color;
-        }
-
-        public void buttonHighlight_Click(object sender, EventArgs e, RichTextBox richTextBox1)
+        public void buttonHighlight_Click(RichTextBox richTextBox1, ToolStripMenuItem butt)
         {
             using ColorDialog colorDialog = new ColorDialog();
             if (colorDialog.ShowDialog() == DialogResult.OK)
             {
                 richTextBox1.SelectionBackColor = colorDialog.Color;
+                butt.BackColor = richTextBox1.SelectionBackColor;
             }
         }
 
+        public void buttonColor_Click(RichTextBox richTextBox1, ToolStripMenuItem butt)
+        {
+            using ColorDialog colorDialog = new ColorDialog();
+            if (colorDialog.ShowDialog() == DialogResult.OK)
+            {
+                richTextBox1.SelectionColor = colorDialog.Color;
+                butt.BackColor = richTextBox1.SelectionColor;
+            }
+        }
         public void buttonNumbering_Click(object sender, EventArgs e, RichTextBox richTextBox1)
         {
             int start = richTextBox1.SelectionStart;
@@ -113,6 +121,7 @@ namespace text_editor
 
             richTextBox1.Lines = lines;
         }
+
 
         public void richTextBox1_KeyDown(object sender, KeyEventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
         {

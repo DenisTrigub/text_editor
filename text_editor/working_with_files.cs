@@ -3,9 +3,12 @@ using System.IO;
 using System.Windows.Forms;
 using PdfSharp.Pdf;
 using PdfSharp.Drawing;
-using PdfSharp.Pdf.IO;
 using System.Text;
-using PdfiumViewer;
+using iTextSharp.text.pdf;
+using iTextSharp.text.pdf.parser;
+using PdfSharp.Pdf.IO;
+
+
 
 namespace text_editor
 {
@@ -25,7 +28,7 @@ namespace text_editor
                 return;
 
             string path = saveFileDialog.FileName;
-            string ext = Path.GetExtension(path).ToLower();
+            string ext = System.IO.Path.GetExtension(path).ToLower();
 
             try
             {
@@ -71,7 +74,7 @@ namespace text_editor
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 string path = openFileDialog.FileName;
-                string ext = Path.GetExtension(path).ToLower();
+                string ext = System.IO.Path.GetExtension(path).ToLower();
 
                 try
                 {
@@ -104,11 +107,12 @@ namespace text_editor
         {
             if (string.IsNullOrEmpty(currentFilePath))
             {
+
                 MessageBox.Show("Файл не відкрито або не створено!", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            string ext = Path.GetExtension(currentFilePath).ToLower();
+            string ext = System.IO.Path.GetExtension(currentFilePath).ToLower();
 
             try
             {
@@ -153,55 +157,68 @@ namespace text_editor
 
         public void SaveAsPdf(string path, string content)
         {
-
             try
             {
+                Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
                 PdfSharp.Pdf.PdfDocument document = new PdfSharp.Pdf.PdfDocument();
                 document.Info.Title = "Текстовий документ";
 
                 PdfSharp.Pdf.PdfPage page = document.AddPage();
                 XGraphics gfx = XGraphics.FromPdfPage(page);
+                XFont font = new XFont("Verdana", 12, XFontStyle.Regular);
 
                 string[] lines = content.Split(new[] { "\r\n", "\n" }, StringSplitOptions.None);
                 double y = 40;
+                double lineHeight = font.Size * 1.2;
 
                 foreach (string line in lines)
                 {
-                    if (y > page.Height - 40)
+                    if (y + lineHeight > page.Height - 40)
                     {
                         page = document.AddPage();
                         gfx = XGraphics.FromPdfPage(page);
                         y = 40;
                     }
+
+                    gfx.DrawString(line, font, XBrushes.Black,
+                        new XRect(40, y, page.Width - 80, lineHeight),
+                        XStringFormats.TopLeft);
+
+                    y += lineHeight;
                 }
+
                 document.Save(path);
                 document.Close();
+
                 MessageBox.Show("PDF успішно збережено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Помилка при збереженні PDF:\n" + ex.ToString(), "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Помилка при збереженні PDF:\n" + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
         public void OpenPdf(string path, RichTextBox editorTextBox)
         {
             try
             {
-                using (var document = PdfiumViewer.PdfDocument.Load(path))
-                {
-                    StringBuilder sb = new StringBuilder();
+                StringBuilder text = new StringBuilder();
 
-                    for (int i = 0; i < document.PageCount; i++)
-                    {
-                        string text = document.GetPdfText(i);
-                        sb.AppendLine(text);
-                    }
-                    editorTextBox.Text = sb.ToString();
+                iTextSharp.text.pdf.PdfReader pdfReader = new iTextSharp.text.pdf.PdfReader(path);
+                for (int i = 1; i <= pdfReader.NumberOfPages; i++)
+                {
+                    text.Append(PdfTextExtractor.GetTextFromPage(pdfReader, i));
                 }
+                pdfReader.Close();
+
+                editorTextBox.Text = text.ToString();
             }
             catch (Exception ex)
             {
-                MessageBox.Show("Помилка при відкритті PDF:\n" + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Не вдалося відкрити PDF:\n" + ex.Message,
+                    "Помилка",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
             }
         }
     }
