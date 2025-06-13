@@ -18,12 +18,12 @@ namespace text_editor
 
         public void CreateNewDocument(RichTextBox editorTextBox)
         {
-            SaveFileDialog saveFileDialog = new SaveFileDialog 
+            SaveFileDialog saveFileDialog = new SaveFileDialog
             {
                 Filter = "Text Files (*.txt)|*.txt|Rich Text Format (*.rtf)|*.rtf|PDF Files (*.pdf)|*.pdf",
                 Title = "Створити новий документ"
             };
-           
+
             if (saveFileDialog.ShowDialog() != DialogResult.OK || string.IsNullOrWhiteSpace(saveFileDialog.FileName))
                 return;
 

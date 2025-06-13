@@ -26,7 +26,6 @@ namespace text_editor
             }
         }
 
-
         public void buttonFind_Click(RichTextBox richTextBox1, RichTextBox textBoxSearch)
         {
             string searchText = textBoxSearch.Text;

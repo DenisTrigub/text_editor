@@ -121,7 +121,7 @@ namespace text_editor
 
             richTextBox1.Lines = lines;
         }
-      
+
 
         public void richTextBox1_KeyDown(object sender, KeyEventArgs e, RichTextBox richTextBox1, ComboBox comboBoxBullets)
         {
