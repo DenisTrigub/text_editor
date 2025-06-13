@@ -13,19 +13,15 @@ namespace text_editor
         {
             if (string.IsNullOrWhiteSpace(textBoxSearch.Text))
             {
-                for (int i = 0; i < richTextBox1.TextLength; i++)
-                {
-                    richTextBox1.Select(i, 1);
-                    if (richTextBox1.SelectionBackColor == Color.Yellow)
-                    {
-                        richTextBox1.SelectionBackColor = Color.White;
-                    }
-                }
-                richTextBox1.SelectionLength = 0;
-                richTextBox1.SelectionStart = 0;
+                int cursorPosition = richTextBox1.SelectionStart;
+
+                richTextBox1.SelectAll();
+                richTextBox1.SelectionBackColor = Color.White;
+
+                richTextBox1.Select(cursorPosition, 0);
+                richTextBox1.SelectionBackColor = Color.White;
             }
         }
-
 
         public void buttonFind_Click(RichTextBox richTextBox1, RichTextBox textBoxSearch)
         {
@@ -39,6 +35,10 @@ namespace text_editor
 
             int originalSelectionStart = richTextBox1.SelectionStart;
             int originalSelectionLength = richTextBox1.SelectionLength;
+
+            // Очистка предыдущей подсветки
+            richTextBox1.SelectAll();
+            richTextBox1.SelectionBackColor = Color.White;
 
             int startIndex = 0;
             while (startIndex < richTextBox1.TextLength)
@@ -58,7 +58,7 @@ namespace text_editor
             richTextBox1.ScrollToCaret();
             richTextBox1.Focus();
 
-            // Когда всё подсветили, выведем каретку из режима подсветки
+            // Сброс стиля после подсветки
             int caretPosition = richTextBox1.SelectionStart + richTextBox1.SelectionLength;
             richTextBox1.Select(caretPosition, 0);
             richTextBox1.SelectionBackColor = Color.White;

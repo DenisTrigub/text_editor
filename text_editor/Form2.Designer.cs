@@ -67,7 +67,7 @@
             richTextBox1.BorderStyle = BorderStyle.None;
             richTextBox1.HideSelection = false;
             richTextBox1.ImeMode = ImeMode.NoControl;
-            richTextBox1.Location = new Point(132, 12);
+            richTextBox1.Location = new Point(126, 40);
             richTextBox1.Name = "richTextBox1";
             richTextBox1.RightToLeft = RightToLeft.No;
             richTextBox1.Size = new Size(595, 842);
@@ -85,7 +85,7 @@
             menuStrip1.Items.AddRange(new ToolStripItem[] { кнопка1ToolStripMenuItem, кнопка2ToolStripMenuItem, кнопка3ToolStripMenuItem, кнопка4ToolStripMenuItem, кнопка5ToolStripMenuItem, кнопка6ToolStripMenuItem, кнопка7ToolStripMenuItem, кнопка8ToolStripMenuItem, кнопка9ToolStripMenuItem, кнопка10ToolStripMenuItem, кнопка11ToolStripMenuItem, кнопка12ToolStripMenuItem, imageToolStripMenuItem1, chekToolStripMenuItem });
             menuStrip1.Location = new Point(0, 40);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(70, 755);
+            menuStrip1.Size = new Size(156, 755);
             menuStrip1.TabIndex = 6;
             menuStrip1.Text = "menuStrip1";
             // 
@@ -93,7 +93,7 @@
             // 
             кнопка1ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка1ToolStripMenuItem.Image");
             кнопка1ToolStripMenuItem.Name = "кнопка1ToolStripMenuItem";
-            кнопка1ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка1ToolStripMenuItem.Size = new Size(143, 24);
             кнопка1ToolStripMenuItem.ToolTipText = "Жирний";
             кнопка1ToolStripMenuItem.Click += кнопка1ToolStripMenuItem_Click;
             // 
@@ -101,7 +101,7 @@
             // 
             кнопка2ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка2ToolStripMenuItem.Image");
             кнопка2ToolStripMenuItem.Name = "кнопка2ToolStripMenuItem";
-            кнопка2ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка2ToolStripMenuItem.Size = new Size(143, 24);
             кнопка2ToolStripMenuItem.ToolTipText = "Курсив";
             кнопка2ToolStripMenuItem.Click += кнопка2ToolStripMenuItem_Click;
             // 
@@ -109,7 +109,7 @@
             // 
             кнопка3ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка3ToolStripMenuItem.Image");
             кнопка3ToolStripMenuItem.Name = "кнопка3ToolStripMenuItem";
-            кнопка3ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка3ToolStripMenuItem.Size = new Size(143, 24);
             кнопка3ToolStripMenuItem.ToolTipText = "Підкреслено";
             кнопка3ToolStripMenuItem.Click += кнопка3ToolStripMenuItem_Click;
             // 
@@ -117,16 +117,15 @@
             // 
             кнопка4ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка4ToolStripMenuItem.Image");
             кнопка4ToolStripMenuItem.Name = "кнопка4ToolStripMenuItem";
-            кнопка4ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка4ToolStripMenuItem.Size = new Size(143, 24);
             кнопка4ToolStripMenuItem.ToolTipText = "Палітра";
             кнопка4ToolStripMenuItem.Click += кнопка4ToolStripMenuItem_Click;
             // 
             // кнопка5ToolStripMenuItem
             // 
-            кнопка5ToolStripMenuItem.BackColor = SystemColors.ButtonHighlight;
             кнопка5ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка5ToolStripMenuItem.Image");
             кнопка5ToolStripMenuItem.Name = "кнопка5ToolStripMenuItem";
-            кнопка5ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка5ToolStripMenuItem.Size = new Size(143, 24);
             кнопка5ToolStripMenuItem.ToolTipText = "Колір фону";
             кнопка5ToolStripMenuItem.Click += кнопка5ToolStripMenuItem_Click;
             // 
@@ -134,7 +133,7 @@
             // 
             кнопка6ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка6ToolStripMenuItem.Image");
             кнопка6ToolStripMenuItem.Name = "кнопка6ToolStripMenuItem";
-            кнопка6ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка6ToolStripMenuItem.Size = new Size(143, 24);
             кнопка6ToolStripMenuItem.ToolTipText = "Вибір шрифту";
             кнопка6ToolStripMenuItem.Click += кнопка6ToolStripMenuItem_Click;
             // 
@@ -142,27 +141,27 @@
             // 
             кнопка7ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка7ToolStripMenuItem.Image");
             кнопка7ToolStripMenuItem.Name = "кнопка7ToolStripMenuItem";
-            кнопка7ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка7ToolStripMenuItem.Size = new Size(143, 24);
             кнопка7ToolStripMenuItem.Click += кнопка7ToolStripMenuItem_Click;
             // 
             // кнопка8ToolStripMenuItem
             // 
             кнопка8ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка8ToolStripMenuItem.Image");
             кнопка8ToolStripMenuItem.Name = "кнопка8ToolStripMenuItem";
-            кнопка8ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка8ToolStripMenuItem.Size = new Size(143, 24);
             кнопка8ToolStripMenuItem.Click += кнопка8ToolStripMenuItem_Click;
             // 
             // кнопка9ToolStripMenuItem
             // 
             кнопка9ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка9ToolStripMenuItem.Image");
             кнопка9ToolStripMenuItem.Name = "кнопка9ToolStripMenuItem";
-            кнопка9ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка9ToolStripMenuItem.Size = new Size(143, 24);
             кнопка9ToolStripMenuItem.Click += кнопка9ToolStripMenuItem_Click;
             // 
             // кнопка10ToolStripMenuItem
             // 
             кнопка10ToolStripMenuItem.Name = "кнопка10ToolStripMenuItem";
-            кнопка10ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка10ToolStripMenuItem.Size = new Size(143, 24);
             кнопка10ToolStripMenuItem.Text = "1. 2 .3.";
             кнопка10ToolStripMenuItem.Click += нумерацияToolStripMenuItem_Click;
             // 
@@ -171,7 +170,7 @@
             кнопка11ToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { влевоToolStripMenuItem, поЦентруToolStripMenuItem, вправоToolStripMenuItem });
             кнопка11ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка11ToolStripMenuItem.Image");
             кнопка11ToolStripMenuItem.Name = "кнопка11ToolStripMenuItem";
-            кнопка11ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка11ToolStripMenuItem.Size = new Size(143, 24);
             // 
             // влевоToolStripMenuItem
             // 
@@ -201,21 +200,21 @@
             // 
             кнопка12ToolStripMenuItem.Image = (Image)resources.GetObject("кнопка12ToolStripMenuItem.Image");
             кнопка12ToolStripMenuItem.Name = "кнопка12ToolStripMenuItem";
-            кнопка12ToolStripMenuItem.Size = new Size(57, 24);
+            кнопка12ToolStripMenuItem.Size = new Size(143, 24);
             кнопка12ToolStripMenuItem.Click += кнопка12ToolStripMenuItem_Click;
             // 
             // imageToolStripMenuItem1
             // 
             imageToolStripMenuItem1.Image = (Image)resources.GetObject("imageToolStripMenuItem1.Image");
             imageToolStripMenuItem1.Name = "imageToolStripMenuItem1";
-            imageToolStripMenuItem1.Size = new Size(57, 24);
+            imageToolStripMenuItem1.Size = new Size(143, 24);
             imageToolStripMenuItem1.Click += imageToolStripMenuItem1_Click;
             // 
             // chekToolStripMenuItem
             // 
             chekToolStripMenuItem.Image = (Image)resources.GetObject("chekToolStripMenuItem.Image");
             chekToolStripMenuItem.Name = "chekToolStripMenuItem";
-            chekToolStripMenuItem.Size = new Size(57, 24);
+            chekToolStripMenuItem.Size = new Size(143, 24);
             chekToolStripMenuItem.Click += chekToolStripMenuItem_Click;
             // 
             // menuStrip2
@@ -268,7 +267,7 @@
             // 
             richTextBox2.Anchor = AnchorStyles.None;
             richTextBox2.BorderStyle = BorderStyle.FixedSingle;
-            richTextBox2.Location = new Point(315, -38);
+            richTextBox2.Location = new Point(315, -22);
             richTextBox2.Name = "richTextBox2";
             richTextBox2.Size = new Size(180, 29);
             richTextBox2.TabIndex = 8;
@@ -279,7 +278,7 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(251, -28);
+            label1.Location = new Point(251, -17);
             label1.Name = "label1";
             label1.Size = new Size(58, 20);
             label1.TabIndex = 9;
