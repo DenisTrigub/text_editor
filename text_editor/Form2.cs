@@ -16,7 +16,7 @@ namespace text_editor
 
         private text_editor textEditor = new text_editor();
         private ToolTip toolTip = new ToolTip();
-        private string dictionaryPath = "ru_RU.dic";
+        private string dictionaryPath = "en_US.dic";
         public Form2()
         {
             InitializeComponent();
@@ -86,16 +86,17 @@ namespace text_editor
         private void toolStripMenuItem10_Click(object sender, EventArgs e)
         {
             textEditor.OpenFile(richTextBox1);
+            UpdateFormTitle(textEditor.GetCurrentFilePath());
         }
 
         private void toolStripMenuItem11_Click(object sender, EventArgs e)
         {
-            textEditor.SaveAsFile(richTextBox1);
+            textEditor.SaveFile(richTextBox1);
         }
 
         private void toolStripMenuItem12_Click(object sender, EventArgs e)
         {
-            textEditor.SaveFile(richTextBox1);
+            textEditor.SaveAsFile(richTextBox1);
         }
 
         private void кнопка2ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -110,17 +111,17 @@ namespace text_editor
 
         private void кнопка4ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textEditor.buttonColor_Click(sender, e, richTextBox1);
+            textEditor.buttonColor_Click(richTextBox1, PaletteToolStripMenuItem);
         }
 
         private void кнопка5ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textEditor.buttonHighlight_Click(sender, e, richTextBox1);
+            textEditor.buttonHighlight_Click(richTextBox1, BackgroundColorToolStripMenuItem);
         }
 
         private void кнопка6ToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            textEditor.buttonFont_Click(sender, e, richTextBox1);
+            textEditor.buttonFont_Click(sender, e, richTextBox1, FontSelectionToolStripMenuItem);
         }
 
         private void кнопка7ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,6 +184,19 @@ namespace text_editor
         
             textEditor.Syntax_highlighting(richTextBox1, dictionaryPath);
             textEditor.UnderlineMisspelledWords(richTextBox1);
+        }
+
+        private void UpdateFormTitle(string filePath)
+        {
+            if (!string.IsNullOrEmpty(filePath))
+            {
+                string fileName = Path.GetFileName(filePath);
+                this.Text = $"Text Editor - {fileName}";
+            }
+            else
+            {
+                this.Text = "Text Editor - [Новий документ]";
+            }
         }
     }
    }

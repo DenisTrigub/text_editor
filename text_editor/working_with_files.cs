@@ -221,5 +221,11 @@ namespace text_editor
                     MessageBoxIcon.Error);
             }
         }
+
+        public string GetCurrentFilePath()
+        {
+            return currentFilePath;
+        }
+
     }
 }
